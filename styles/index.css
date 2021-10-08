@@ -1,0 +1,36 @@
+html, body {
+	font-family: Fira Code, Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #44475A;
+  display: grid;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  margin-right: auto;
+  margin-left: auto;
+	margin-top: 50px;
+	color: 	#BD93F9;
+}
+
+canvas {
+  margin-right: auto;
+  margin-left: auto;
+	
+  border: 5px solid #f8f8f2;
+  background-color: #282A36;
+}
+
+/* #screen {
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+
+#terminal {
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+} */
