@@ -1,0 +1,14 @@
+{
+	"include": [
+		"./src"
+	],
+	"compilerOptions": {
+		"declaration": true,
+		"module": "ES6",
+		"moduleResolution": "Node",
+		"outDir": "./public/javascript",
+		"skipLibCheck": true,
+		"strict": true,
+		"target": "ES5"
+	}
+}
