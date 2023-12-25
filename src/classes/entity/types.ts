@@ -1,8 +1,19 @@
+export interface Position {
+	x?: number
+	y?: number
+	z?: number
+}
+
+export interface Velocity {
+	x?: number
+	y?: number
+}
+
 export interface EntityOptions {
 	image?: string
 	text?: string
-	x?: number
-	y?: number
+	position?: Position
+	velocity?: Velocity
 }
 
 export type Context = CanvasRenderingContext2D

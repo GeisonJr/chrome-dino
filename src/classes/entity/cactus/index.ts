@@ -1,13 +1,11 @@
-import Entity from '../entity'
-import type { EntityOptions } from '../entity/types'
+import Entity from '..'
+import type { EntityOptions } from '../types'
 
 export default class Cactus extends Entity {
 
 	constructor(options?: EntityOptions) {
 		super({
-			image: './assets/cactus/0.bmp',
-			x: 0,
-			y: 0,
+			image: './assets/cactus/0.svg',
 			...options
 		})
 	}

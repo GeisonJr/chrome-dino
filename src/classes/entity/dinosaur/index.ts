@@ -1,5 +1,5 @@
-import Entity from '../entity'
-import type { EntityOptions } from '../entity/types'
+import Entity from '..'
+import type { EntityOptions } from '../types'
 
 export default class Dinosaur extends Entity {
 	// States
@@ -14,14 +14,9 @@ export default class Dinosaur extends Entity {
 	private _score: number = 0
 	private _highscore: number = 0
 
-	// Physics
-	private _velocity: number = 0
-
 	constructor(options?: EntityOptions) {
 		super({
-			image: './assets/dinosaur/0.bmp',
-			x: 0,
-			y: 0,
+			image: './assets/dinosaur/0.svg',
 			...options
 		})
 	}
@@ -90,14 +85,6 @@ export default class Dinosaur extends Entity {
 		this._sprite = value
 	}
 
-	public get velocity(): number {
-		return this._velocity
-	}
-
-	public set velocity(value: number) {
-		this._velocity = value
-	}
-
 	public animate() {
 		if (!this.alive)
 			return
@@ -112,7 +99,7 @@ export default class Dinosaur extends Entity {
 		this.updated = now
 
 		if (this.duck) {
-			this.image.src = `./assets/dinosaur/${this.sprite}.bmp`
+			this.image.src = `./assets/dinosaur/${this.sprite}.svg`
 			if (this.sprite === 0)
 				this.sprite = 1
 			else if (this.sprite === 1)
@@ -125,11 +112,11 @@ export default class Dinosaur extends Entity {
 				this.sprite = 3
 
 		} else if (this.jump) {
-			this.image.src = `./assets/dinosaur/${this.sprite}.bmp`
+			this.image.src = `./assets/dinosaur/${this.sprite}.svg`
 			this.sprite = 0
 
 		} else {
-			this.image.src = `./assets/dinosaur/${this.sprite}.bmp`
+			this.image.src = `./assets/dinosaur/${this.sprite}.svg`
 			if (this.sprite === 0)
 				this.sprite = 1
 			else if (this.sprite === 1)

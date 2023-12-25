@@ -1,18 +1,22 @@
-import { isFalsy, isNullOrUndefined } from '../../functions/typing'
-import type { Context, EntityOptions } from './types'
+import { isFalsy, isNullOrUndefined } from '../../functions/types'
+import type { Context, EntityOptions, Position, Velocity } from './types'
 
 export default class Entity {
-	private _ready: boolean = false
 	private _id: string = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
-	private _x: number = 0
-	private _y: number = 0
 	private _image: HTMLImageElement = new Image()
+	private _position: Position = {}
 	private _text: string = ''
+	private _velocity: Velocity = {}
 
 	constructor(options?: EntityOptions) {
 		// Position
-		this.x = options?.x ?? 0
-		this.y = options?.y ?? 0
+		this._position.x = options?.position?.x ?? 0
+		this._position.y = options?.position?.y ?? 0
+		this._position.z = options?.position?.z ?? 0
+
+		// Velocity
+		this._velocity.x = options?.velocity?.x ?? 0
+		this._velocity.y = options?.velocity?.y ?? 0
 
 		// Image
 		if (options?.image)
@@ -20,14 +24,6 @@ export default class Entity {
 
 		// Text
 		this.text = options?.text ?? ''
-	}
-
-	public get ready(): boolean {
-		return this._ready
-	}
-
-	public set ready(value: boolean) {
-		this._ready = value
 	}
 
 	public get height(): number {
@@ -47,26 +43,34 @@ export default class Entity {
 	}
 
 	public get x(): number {
-		return this._x
+		return this._position.x ?? 0
 	}
 
 	public set x(x: number) {
-		this._x = x
+		this._position.x = x
 	}
 
 	public get y(): number {
-		return this._y
+		return this._position.y ?? 0
 	}
 
 	public set y(y: number) {
-		this._y = y
+		this._position.y = y
+	}
+
+	public get z(): number {
+		return this._position.z ?? 0
+	}
+
+	public set z(z: number) {
+		this._position.z = z
 	}
 
 	public get image(): HTMLImageElement {
 		return this._image
 	}
 
-	private set image(value: HTMLImageElement) {
+	public set image(value: HTMLImageElement) {
 		this._image = value
 	}
 
@@ -76,6 +80,14 @@ export default class Entity {
 
 	protected set text(value: string) {
 		this._text = value
+	}
+
+	public get velocity(): Velocity {
+		return this._velocity
+	}
+
+	public set velocity(value: number) {
+		this._velocity = value
 	}
 
 	public draw(context: Context): void {
@@ -104,5 +116,10 @@ export default class Entity {
 			return
 
 		context.fillText(this._text, this._x, this._y)
+	}
+
+	protected gravity(): void {
+		// Apply gravity
+		// ...
 	}
 }
