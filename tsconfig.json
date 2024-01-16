@@ -3,10 +3,12 @@
 		"./src"
 	],
 	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
 		"declaration": true,
 		"module": "ES6",
 		"moduleResolution": "Node",
 		"outDir": "./public/javascript",
+		"resolveJsonModule": true,
 		"skipLibCheck": true,
 		"strict": true,
 		"target": "ES5"
