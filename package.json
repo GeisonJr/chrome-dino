@@ -19,6 +19,7 @@
 		"build": "npm run script:clean && npm run tsc:build && npm run script:import",
 		"test": "jest",
 		"prepack": "npm run build",
+		"start": "npm run build && python3 -m http.server 8080 --directory public",
 		"script:clean": "node ./scripts/clean.js",
 		"script:import": "node ./scripts/import.js",
 		"tsc:build": "tsc -p ./tsconfig.json"
