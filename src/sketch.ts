@@ -2,7 +2,6 @@ import Cactus from './classes/entity/cactus'
 import Cloud from './classes/scenario/cloud'
 import Dinosaur from './classes/entity/dinosaur'
 import Pterodactyl from './classes/entity/pterodactyl'
-import Spike from './classes/entity/spike'
 import Game from './classes/game'
 import Ground from './classes/scenario/ground'
 import Mountain from './classes/scenario/mountain'
@@ -72,12 +71,6 @@ function startGame() {
 		position: { x: ((game.canvas.width) / 5) * 5 }
 	})
 
-	// Spikes
-	const spike1 = new Spike({
-		velocity: { x: 4 },
-		position: { x: 20 }
-	})
-
 	// Pterodactyls
 	const pterodactyl1 = new Pterodactyl({
 		velocity: { x: 4 },
@@ -140,8 +133,6 @@ function startGame() {
 	})
 
 	// Add enemies to game
-	game.addEnemy(spike1)
-
 	game.addEnemy(pterodactyl1)
 
 	game.addEnemy(cactus2)

@@ -441,16 +441,18 @@ export default class Game {
 		}
 
 		// Reset enemies
+		const cacti = this.enemies.filter(enemy => enemy instanceof Cactus).length
+		let cactus = 0
 		for (const enemy of this.enemies) {
 			if (enemy instanceof Cactus) { // Cactus
 				enemy.image.src = `./assets/cactus/${randomInt(0, 4)}.svg`
-				// enemy.x = this.canvas.width
+				enemy.x = (this.canvas.width / cacti) * ++cactus
 				enemy.y = this.canvas.height - enemy.height - 10
 				// player.velocity = 0
 
 			} else if (enemy instanceof Pterodactyl) { // Pterodactyl
 				// enemy.image.src = ''
-				// enemy.x = this.canvas.width
+				enemy.x = this.canvas.width * 1.5
 				enemy.y = this.canvas.height - enemy.height - 40
 				// player.velocity = 0
 
@@ -516,17 +518,12 @@ export default class Game {
 			this.gravity()
 			this.repostion()
 			this.move()
-			// this.collision()
 
-			// Update
-			// for (const enemy of this.enemies) {
-			// 	for (const player of this.players) {
-			// 		// Check collision
-			// 		if (this.collision(player, enemy))
-			// 			if (player instanceof Dinosaur) // Dinosaurs
-			// 				player.alive = false
-			// 	}
-			// }
+			if (this.state === 'started')
+				for (const enemy of this.enemies)
+					for (const player of this.players)
+						if (player instanceof Dinosaur && this.collision(player, enemy))
+							player.alive = false
 
 			// Check if has any dinosaur alive
 			let alive = false
