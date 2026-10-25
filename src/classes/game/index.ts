@@ -281,11 +281,12 @@ export default class Game {
 
 	public move() {
 
+		if (this.state !== 'started')
+			return
+
 		// Update players
-		for (const player of this.players) {
+		for (const player of this.players)
 			player.x += player.velocity.x
-			player.y += player.velocity.y
-		}
 
 		// Update enemies
 		for (const enemy of this.enemies) {
@@ -377,13 +378,9 @@ export default class Game {
 			// Out of the screen
 			const isOut = scenario.x < -scenario.width
 
-			// Reset default values
-			scenario.velocity.x = 0
-			scenario.velocity.y = 0
-
 			if (scenario instanceof Cloud) {
 				if (reset || isOut) {
-					scenario.image.src = `./assets/cloud/${randomInt(0, 2)}.svg`
+					scenario.image.src = './assets/cloud/0.svg'
 					scenario.y = randomInt(0, 30) + 30
 					scenario.velocity.x = randomInt(1, 2)
 				}
@@ -506,8 +503,15 @@ export default class Game {
 	public render() {
 
 		// Check tick
-		if (performance.now() - this.lastTick < this.tick) {
-			this.lastTick = performance.now()
+		const step = 1000 / this.tick
+		const now = performance.now()
+
+		// Drop time lost while loading or in a hidden tab instead of fast-forwarding
+		if (now - this.lastTick > step * 5)
+			this.lastTick = now - step
+
+		while (now - this.lastTick >= step) {
+			this.lastTick += step
 
 			this.gravity()
 			this.repostion()
