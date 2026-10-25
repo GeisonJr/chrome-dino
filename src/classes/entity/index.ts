@@ -4,9 +4,9 @@ import type { Context, EntityOptions, Position, Velocity } from './types'
 export default class Entity {
 	private _id: string = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
 	private _image: HTMLImageElement = new Image()
-	private _position: Position = {}
+	private _position: Required<Position> = { x: 0, y: 0, z: 0 }
 	private _text: string = ''
-	private _velocity: Velocity = {}
+	private _velocity: Required<Velocity> = { x: 0, y: 0 }
 
 	constructor(options?: EntityOptions) {
 		// Position
@@ -82,12 +82,17 @@ export default class Entity {
 		this._text = value
 	}
 
-	public get velocity(): Velocity {
+	public get position(): Required<Position> {
+		return this._position
+	}
+
+	public get velocity(): Required<Velocity> {
 		return this._velocity
 	}
 
-	public set velocity(value: number) {
-		this._velocity = value
+	public set velocity(value: Velocity) {
+		this._velocity.x = value.x ?? 0
+		this._velocity.y = value.y ?? 0
 	}
 
 	public draw(context: Context): void {
@@ -105,7 +110,7 @@ export default class Entity {
 		if (this._image.complete === false)
 			return
 
-		context.drawImage(this._image, this._x, this._y, this._image.width, this._image.height)
+		context.drawImage(this._image, this.x, this.y, this._image.width, this._image.height)
 	}
 
 	protected drawText(context: Context): void {
@@ -115,7 +120,7 @@ export default class Entity {
 		if (isFalsy(this._text))
 			return
 
-		context.fillText(this._text, this._x, this._y)
+		context.fillText(this._text, this.x, this.y)
 	}
 
 	protected gravity(): void {

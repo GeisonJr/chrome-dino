@@ -253,21 +253,21 @@ export default class Game {
 				const groundLevel = this.canvas.height - player.height - 10
 				if (player.jump && player.y === groundLevel) {
 					// If the dinosaur can jump and is on the ground
-					player.velocity = -15  // Adjust the jump strength as needed
+					player.velocity.y = -15  // Adjust the jump strength as needed
 				}
 
 				// Simulate gravity
-				player.velocity += this.GRAVITY
+				player.velocity.y += this.GRAVITY
 
 				// Update the dinosaur's position
-				player.y += player.velocity
+				player.y += player.velocity.y
 
 				// Boundary check for the bottom of the canvas
 				if (player.y >= groundLevel) {
 					player.jump = false
 					player.y = groundLevel
 					// Reset velocity when on the ground to simulate smooth descent
-					player.velocity = 0
+					player.velocity.y = 0
 				}
 			}
 		}
@@ -385,7 +385,7 @@ export default class Game {
 				if (reset || isOut) {
 					scenario.image.src = `./assets/cloud/${randomInt(0, 2)}.svg`
 					scenario.y = randomInt(0, 30) + 30
-					scenario.velocity = randomInt(1, 2)
+					scenario.velocity.x = randomInt(1, 2)
 				}
 
 				if (reset) {
@@ -420,7 +420,7 @@ export default class Game {
 					// ...
 
 				} else if (isOut) {
-					scenario.position.x = this.canvas.width - scenario.velocity
+					scenario.position.x = this.canvas.width - scenario.velocity.x
 				}
 			}
 		}
@@ -474,7 +474,7 @@ export default class Game {
 				// scenario.image.src = ''
 				// scenario.x = 0
 				scenario.y = randomInt(0, 30) + 30
-				scenario.velocity = randomInt(1, 2)
+				scenario.velocity.x = randomInt(1, 2)
 
 			} else if (scenario instanceof Ground) { // Grounds
 				scenario.image.src = `./assets/ground/${randomInt(0, 1)}.svg`

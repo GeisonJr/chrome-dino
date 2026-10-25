@@ -4,9 +4,9 @@ import type { Context, Position, ScenarioOptions, Velocity } from './types'
 export default class Scenario {
 	private _id: string = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
 	private _image: HTMLImageElement = new Image()
-	private _position: Position = {}
+	private _position: Required<Position> = { x: 0, y: 0, z: 0 }
 	private _text: string = ''
-	private _velocity: Velocity = {}
+	private _velocity: Required<Velocity> = { x: 0, y: 0 }
 
 	constructor(options?: ScenarioOptions) {
 		// Position
@@ -28,6 +28,7 @@ export default class Scenario {
 
 	public get height(): number {
 		return this._image.height
+	}
 
 
 	protected set height(value: number) {
@@ -43,27 +44,27 @@ export default class Scenario {
 	}
 
 	public get x(): number {
-		return this._x
+		return this._position.x
 	}
 
 	public set x(x: number) {
-		this._x = x
+		this._position.x = x
 	}
 
 	public get y(): number {
-		return this._y
+		return this._position.y
 	}
 
 	public set y(y: number) {
-		this._y = y
+		this._position.y = y
 	}
 
 	public get z(): number {
-		return this._z
+		return this._position.z
 	}
 
 	public set z(z: number) {
-		this._z = z
+		this._position.z = z
 	}
 
 	public get image(): HTMLImageElement {
@@ -82,12 +83,17 @@ export default class Scenario {
 		this._text = value
 	}
 
-	public get velocity(): number {
+	public get position(): Required<Position> {
+		return this._position
+	}
+
+	public get velocity(): Required<Velocity> {
 		return this._velocity
 	}
 
-	public set velocity(value: number) {
-		this._velocity = value
+	public set velocity(value: Velocity) {
+		this._velocity.x = value.x ?? 0
+		this._velocity.y = value.y ?? 0
 	}
 
 

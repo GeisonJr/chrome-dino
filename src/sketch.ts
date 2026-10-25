@@ -46,97 +46,97 @@ function startGame() {
 	game.canvas.parent = document.body
 
 	// Dinosaurs
-	const dinosaur1 = new Dinosaur({ x: 20 })
-	const dinosaur2 = new Dinosaur({ x: 40 })
-	const dinosaur3 = new Dinosaur({ x: 60 })
+	const dinosaur1 = new Dinosaur({ position: { x: 20 } })
+	const dinosaur2 = new Dinosaur({ position: { x: 40 } })
+	const dinosaur3 = new Dinosaur({ position: { x: 60 } })
 
 	// Cactus
 	const cactus1 = new Cactus({
-		velocity: 4,
-		x: ((game.canvas.width) / 5) * 1
+		velocity: { x: 4 },
+		position: { x: ((game.canvas.width) / 5) * 1 }
 	})
 	const cactus2 = new Cactus({
-		velocity: 4,
-		x: ((game.canvas.width) / 5) * 2
+		velocity: { x: 4 },
+		position: { x: ((game.canvas.width) / 5) * 2 }
 	})
 	const cactus3 = new Cactus({
-		velocity: 4,
-		x: ((game.canvas.width) / 5) * 3
+		velocity: { x: 4 },
+		position: { x: ((game.canvas.width) / 5) * 3 }
 	})
 	const cactus4 = new Cactus({
-		velocity: 4,
-		x: ((game.canvas.width) / 5) * 4
+		velocity: { x: 4 },
+		position: { x: ((game.canvas.width) / 5) * 4 }
 	})
 	const cactus5 = new Cactus({
-		velocity: 4,
-		x: ((game.canvas.width) / 5) * 5
+		velocity: { x: 4 },
+		position: { x: ((game.canvas.width) / 5) * 5 }
 	})
 
 	// Spikes
 	const spike1 = new Spike({
-		velocity: 4,
-		x: 20
+		velocity: { x: 4 },
+		position: { x: 20 }
 	})
 
 	// Pterodactyls
 	const pterodactyl1 = new Pterodactyl({
-		velocity: 4,
-		x: 20
+		velocity: { x: 4 },
+		position: { x: 20 }
 	})
 
 	// Clouds
-	const cloud1 = new Cloud({ x: (game.canvas.width / 7) * 1 })
-	const cloud2 = new Cloud({ x: (game.canvas.width / 7) * 2 })
-	const cloud3 = new Cloud({ x: (game.canvas.width / 7) * 3 })
-	const cloud4 = new Cloud({ x: (game.canvas.width / 7) * 4 })
-	const cloud5 = new Cloud({ x: (game.canvas.width / 7) * 5 })
-	const cloud6 = new Cloud({ x: (game.canvas.width / 7) * 6 })
-	const cloud7 = new Cloud({ x: (game.canvas.width / 7) * 7 })
+	const cloud1 = new Cloud({ position: { x: (game.canvas.width / 7) * 1 } })
+	const cloud2 = new Cloud({ position: { x: (game.canvas.width / 7) * 2 } })
+	const cloud3 = new Cloud({ position: { x: (game.canvas.width / 7) * 3 } })
+	const cloud4 = new Cloud({ position: { x: (game.canvas.width / 7) * 4 } })
+	const cloud5 = new Cloud({ position: { x: (game.canvas.width / 7) * 5 } })
+	const cloud6 = new Cloud({ position: { x: (game.canvas.width / 7) * 6 } })
+	const cloud7 = new Cloud({ position: { x: (game.canvas.width / 7) * 7 } })
 
 	// Grounds
 	const ground1 = new Ground({
 		image: './assets/ground/0.svg',
-		velocity: 4
+		velocity: { x: 4 }
 	})
 
 	const ground2 = new Ground({
 		image: './assets/ground/1.svg',
-		velocity: 4,
-		x: ground1.width
+		velocity: { x: 4 },
+		position: { x: ground1.width }
 	})
 
 	// Mountains
 	const mountain0 = new Mountain({
 		image: './assets/mountain/0.svg',
-		velocity: 1
+		velocity: { x: 1 }
 	})
 
 	const mountain1 = new Mountain({
 		image: './assets/mountain/1.svg',
-		velocity: 1,
-		x: mountain0.width
+		velocity: { x: 1 },
+		position: { x: mountain0.width }
 	})
 
 	const mountain2 = new Mountain({
 		image: './assets/mountain/2.svg',
-		velocity: 2
+		velocity: { x: 2 }
 	})
 
 	const mountain3 = new Mountain({
 		image: './assets/mountain/3.svg',
-		velocity: 2,
-		x: mountain2.width
+		velocity: { x: 2 },
+		position: { x: mountain2.width }
 	})
 
 	const mountain4 = new Mountain({
 		image: './assets/mountain/4.svg',
-		velocity: 3
+		velocity: { x: 3 }
 	})
 
 	const mountain5 = new Mountain({
 		image: './assets/mountain/5.svg',
-		velocity: 3,
-		x: mountain4.width
+		velocity: { x: 3 },
+		position: { x: mountain4.width }
 	})
 
 	// Add enemies to game
